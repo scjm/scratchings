@@ -1,13 +1,30 @@
+import { Outlet, Route, Routes } from 'react-router-dom';
 
-import './categories.styles.scss'
+import Home from './components/routes/home/home.component'
+import Navigation from './components/routes/navigation/navigation.component';
+import SignIn from './components/routes/sign-in/sign-in.component';
 
-import Directory from './components/directory/directory.component';
+const Shop = () => {
+  return(
+    <div>
+      <div>
+        <h1>Shopping page</h1>
+      </div>
+    </div>
+  )
+}
 
 const App = () => {
   return(
-    <>
-      <Directory/>
-    </>
-  )
+    <Routes>
+      <Route path='/' element={<Navigation/>}>
+        <Route index element={<Home/>}/>
+        <Route path='shop' element={<Shop/>}/>
+        <Route path='sign-in' element={<SignIn/>}/>
+
+        <Route/>
+      </Route>
+    </Routes>
+      )
 }
 export default App;
