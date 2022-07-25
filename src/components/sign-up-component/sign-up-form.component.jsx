@@ -4,6 +4,7 @@ import FormInput from "../form-input/form-input.component"
 import Button from "../button/button.component"
 
 import './sign-up-form.component.scss'
+import '../button/button.component.scss'
 
 const defaultFormFields = {
     displayName: '',
@@ -31,7 +32,6 @@ const SignUpForm = () => {
             const user = await createAuthUserWithEmailAndPassword(email, password);
             await createUserDocumentFromAuth(user, {displayName})
             resetFormFields()
-            console.log(user)
         }catch (error){
             if(error.code === 'auth/email-already-in-use'){
                 alert('Cannot create user/email already in use')
@@ -46,12 +46,11 @@ const SignUpForm = () => {
         const {name, value} = event.target
         setFormFields({...formFields, [name]: value})
     }
-    console.log(formFields)
 
 
     return(
         <div className="sign-up-container">
-            <h2>I donot have an account?</h2>
+            <h2>Don't have an account?</h2>
         <span>Sign up with your email and password</span>
             <form onSubmit={handleSubmit}>
                 <FormInput 
@@ -84,12 +83,14 @@ const SignUpForm = () => {
                     value={confirmPassword}
                     inputLabel="Confirm Password"
                 />
-                <Button 
+                <div style={{alignItems: "center", display:"flex", justifyContent:"center"}}>
+                    <Button 
                     type="submit" 
                     >
                     Submit
-                    </Button>
-            </form>
+                        </Button>
+                </div>            
+                </form>
         </div>
     )
 }

@@ -1,0 +1,20 @@
+import React from 'react'
+import SignUpForm from '../../sign-up-component/sign-up-form.component';
+import SignInForm from '../../sign-in-component/sign-in-form.component';
+
+import './authentication.styles.scss'
+
+function Authentication() {
+
+  return (
+    <>
+    <div className='authentication-container'>
+    <SignInForm/>
+    <SignUpForm/>
+    </div>
+
+    </>
+  )
+}
+
+export default Authentication
