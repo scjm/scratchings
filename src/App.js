@@ -6,11 +6,11 @@ import SignIn from './components/routes/sign-in/sign-in.component';
 
 const Shop = () => {
   return(
-    <div>
+    <>
       <div>
         <h1>Shopping page</h1>
       </div>
-    </div>
+    </>
   )
 }
 
