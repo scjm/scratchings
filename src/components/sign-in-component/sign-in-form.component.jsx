@@ -4,7 +4,7 @@ import { signInWithGooglePopup,
         signInAuthUserWithEmailAndPassword } 
         from "../../utils/firebase/firebase.utils"
 import FormInput from "../form-input/form-input.component"
-import Button from "../button/button.component"
+import Button, {BUTTON_TYPE_CLASSES} from "../button/button.component"
 
 import './sign-in-form.component.scss'
 import '../button/button.component.scss'
@@ -16,31 +16,23 @@ const defaultFormFields = {
 
 const SignInForm = () => {
 
-    const [ formFields, setFormFields ] = useState(defaultFormFields)
-    const { email, password} = formFields
-
     const resetFormFields = () => {
         setFormFields(defaultFormFields)
     }
 
+    const [ formFields, setFormFields ] = useState(defaultFormFields)
+    const { email, password} = formFields
+
     const signInWithGoogle = async () => {
-        const {user} = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user)
+        await signInWithGooglePopup();
         resetFormFields()
     }
     
 
     const handleSubmit = async (event)=>{
         event.preventDefault();
-
-        try{
-            const response = await signInAuthUserWithEmailAndPassword(email, password)
-            console.log('success')
-            resetFormFields()
-        }catch(error){
-               console.log('front-end catch received this error: ', error.errorMessage)
-        }
-
+        let {user} = await signInAuthUserWithEmailAndPassword(email, password)
+        resetFormFields()
     }
 
     const handleChange = (event)=>{

@@ -4,6 +4,7 @@ import Home from './components/routes/home/home.component'
 import Navigation from './components/routes/navigation/navigation.component';
 import Authentication from './components/routes/authentication/authentication.component';
 
+
 const Shop = () => {
   return(
     <>
